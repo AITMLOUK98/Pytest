@@ -15,6 +15,10 @@ def is_palindrome(word):
     return word == word[::-1]
 
 
+def add(x,y):
+    return x + y
+
+
 class Calculator:
     def __init__(self):
         self.result = 0
@@ -32,3 +36,5 @@ class Calculator:
         if b == 0:
             raise ValueError("Division by zero is not allowed")
         self.result = a / b
+
+

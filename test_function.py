@@ -1,4 +1,6 @@
 import pytest
+
+import calculate
 from calculate import calculate_factorial, is_palindrome, Calculator
 
 
@@ -14,6 +16,8 @@ def test_factorial_negative_number():
         calculate_factorial(-5)
 
 
+@pytest.mark.strings  # us this command line  to run this test pytest test_function.py -v -m strings (you can us any
+# name here can be anything ) "-m for mark and -v to show more details and -x mean exist when he get the fail  test"
 def test_palindrome():
     assert is_palindrome("radar")
     assert is_palindrome("level")
@@ -36,3 +40,14 @@ def test_calculator():
 
     with pytest.raises(ValueError):
         calculator.divide(10, 0)
+
+
+# test using parameterize
+@pytest.mark.parametrize('num1, num2, result',
+                         [
+                             (7, 3, 10),
+                             ('hello', ' world', 'hello world'),
+                             (5.5, 3, 8.5)
+                         ])
+def test_parameterize_add(num1, num2, result):
+    assert calculate.add(num1, num2) == result
